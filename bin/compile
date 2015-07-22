@@ -1,0 +1,16 @@
+#!/bin/sh
+
+env_dir=$3
+s3_bucket=`printenv GEO_S3_BUCKET`
+s3_path=`printenv GEO_S3_PATH`
+geo_download_path=`printenv GEO_DOWNLOAD_PATH`
+
+if [ -e "$s3_bucket" ] && [ -e "$s3_path"]; then
+  download_url="https://$s3_bucket.s3.amazonaws.com/$s3_path"
+else
+  download_url="http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz"
+fi
+
+wget --directory-prefix="$env_dir/$geo_download_path" $download_url
+
+echo "GeoLite DB download complete!"
