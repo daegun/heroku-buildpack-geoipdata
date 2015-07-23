@@ -13,7 +13,7 @@ fi
 
 [ -d $geo_download_path ] || mkdir $geo_download_path
 
-wget --directory-prefix=$geo_download_path $download_url
-gunzip $geo_download_path/GeoLite2-City.mmdb.gz
+wget --directory-prefix=$env_dir/$geo_download_path $download_url
+gunzip $env_dir/$geo_download_path/GeoLite2-City.mmdb.gz
 
 echo "GeoLite DB download and extraction complete!"
