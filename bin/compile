@@ -1,6 +1,6 @@
 #!/bin/sh
 
-env_dir=$3
+app_dir=$1
 s3_bucket=`printenv GEO_S3_BUCKET`
 s3_path=`printenv GEO_S3_PATH`
 geo_download_path=`printenv GEO_DOWNLOAD_PATH`
@@ -13,7 +13,7 @@ fi
 
 [ -d $geo_download_path ] || mkdir $geo_download_path
 
-wget --directory-prefix=$env_dir/$geo_download_path $download_url
-gunzip $env_dir/$geo_download_path/GeoLite2-City.mmdb.gz
+wget --directory-prefix=$app_dir/$geo_download_path $download_url
+gunzip $app_dir/$geo_download_path/GeoLite2-City.mmdb.gz
 
 echo "GeoLite DB download and extraction complete!"
