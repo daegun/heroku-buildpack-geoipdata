@@ -11,9 +11,9 @@ else
   download_url="http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz"
 fi
 
-[ -d $geo_download_path ] || mkdir $geo_download_path
+mkdir -p $geo_download_path
 
-wget --directory-prefix=$app_dir/$geo_download_path $download_url
+wget --directory-prefix=$app_dir/$geo_download_path/ $download_url
 gunzip $app_dir/$geo_download_path/GeoLite2-City.mmdb.gz
 
 echo "GeoLite DB download and extraction complete!"
