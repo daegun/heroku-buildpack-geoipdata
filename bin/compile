@@ -1,9 +1,11 @@
 #!/bin/sh
 
 app_dir=$1
-s3_bucket=`printenv GEO_S3_BUCKET`
-s3_path=`printenv GEO_S3_PATH`
-geo_download_path=`printenv GEO_DOWNLOAD_PATH`
+env_dir=$3
+
+s3_bucket="$(cat $env_dir/GEO_S3_BUCKET)"
+s3_path="$(cat $env_dir/GEO_S3_PATH)"
+geo_download_path="$(cat $env_dir/GEO_DOWNLOAD_PATH)"
 
 if [ -e "$s3_bucket" ] && [ -e "$s3_path"]; then
   download_url="https://$s3_bucket.s3.amazonaws.com/$s3_path"
